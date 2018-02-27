@@ -4,14 +4,24 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
          
-  <servlet>
+    <servlet>
   	<servlet-name>blog</servlet-name>
-  	<servlet-class>blog.BlogServlet</servlet-class>
+  	<jsp-file>/blog.jsp</jsp-file>
   </servlet>
   
   <servlet-mapping>
   	<servlet-name>blog</servlet-name>
-  	<url-pattern>/blog</url-pattern>
+  	<url-pattern>/blog/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>home</servlet-name>
+  	<servlet-class>blog.BlogServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>home</servlet-name>
+  	<url-pattern>/blog/home</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -52,6 +62,26 @@
   <servlet-mapping>
   	<servlet-name>allposts</servlet-name>
   	<url-pattern>/displayall/allposts</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>subscription</servlet-name>
+  	<servlet-class>blog.SubscriptionServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>subscription</servlet-name>
+  	<url-pattern>/subscription</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>sendmail</servlet-name>
+  	<servlet-class>blog.MailServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>sendmail</servlet-name>
+  	<url-pattern>/sendmail</url-pattern>
   </servlet-mapping>
 
   <filter>

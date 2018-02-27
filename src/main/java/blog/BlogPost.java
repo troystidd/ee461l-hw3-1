@@ -39,8 +39,8 @@ public class BlogPost implements Comparable<BlogPost> {
     }
     
     public String getDate() {
-    		//SimpleDateFormat parser = new SimpleDateFormat("MM ")
-    		return date.toString();
+    		SimpleDateFormat parser = new SimpleDateFormat("MMM dd yyyy");
+    		return parser.format(date);
     }
 
     @Override

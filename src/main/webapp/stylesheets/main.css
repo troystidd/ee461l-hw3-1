@@ -41,3 +41,11 @@ p, blockquote {
 	border-bottom: 1px solid #333333;
 	border-left: 1px solid #CCCCCC;
 }
+
+.box {
+	border: 1px solid #646464;
+	padding-left: 12px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right: 12px;
+}

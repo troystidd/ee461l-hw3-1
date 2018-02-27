@@ -32,7 +32,7 @@
       pageContext.setAttribute("user", user);
 %>
 
-<form action="/post/createpost" method="post">
+<form action="/blog/home" method="post">
 	<p>Title</p>
 	<div><textarea name="title" rows="1" cols="30"></textarea></div>
 	<p>Content</p>
@@ -42,7 +42,7 @@
 	<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
 </form>
 
-<p><a href="http://ee461l-hw3.appspot.com/" class="button">Back</a></p>
+<p><a href="http://ee461l-hw3.appspot.com/" class="button">Cancel</a></p>
 <p><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="button">Log out</a></p>
 
 <%

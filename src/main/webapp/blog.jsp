@@ -26,19 +26,19 @@
     if (user != null) {
       pageContext.setAttribute("user", user);
 %>
-
 <p><a href="http://ee461l-hw3.appspot.com/post/post.jsp" class="button">New Post</a></p>
-<p><a href="http://ee461l-hw3.appspot.com/displayall/displayall.jsp" class="button">List All Posts</a></p>
 
 <%
     } else {
 %>
 
-<p><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Login</a></p>
+<p><a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="button">Login</a></p>
 
 <%
     }
 %>
+
+<p><a href="http://ee461l-hw3.appspot.com/displayall/displayall.jsp" class="button">List All Posts</a></p>
 
 <%
 	ObjectifyService.register(BlogPost.class);
@@ -53,35 +53,20 @@
 		
 		<%
 	} else {
-		%>
 		
-		<p>Posts on Blog '${fn:escapeXml(blogName)}'.</p>
-		
-		<%
 		for (int i = 0; i < 5; i++) {
 			BlogPost blogPost = blogPosts.get(i);
 			pageContext.setAttribute("post_title", blogPost.getTitle());
+			pageContext.setAttribute("post_user", blogPost.getUser());
 			pageContext.setAttribute("post_date", blogPost.getDate());
 			pageContext.setAttribute("post_content", blogPost.getContent());
 			%>
-			<h1>${fn:escapeXml(post_title)}</h1>
-			
-			<%
-			if (blogPost.getUser() == null) {
-				%>
-				<p>Anonymous</p>
-				<%
-			}
-			else {
-				pageContext.setAttribute("post_user", blogPost.getUser());
-				%>
+			<div class="box">
+				<h1>${fn:escapeXml(post_title)}</h1>
 				<p>${fn:escapeXml(post_user)}</p>
-				<%
-			}
-			%>
-			
-			<p>${fn:escapeXml(post_date)}</p>
-			<blockquote>${fn:escapeXml(post_content)}</blockquote>
+				<p>${fn:escapeXml(post_date)}</p>
+				<blockquote>${fn:escapeXml(post_content)}</blockquote>
+			</div>
 			<br>
 			<%
 		}
@@ -89,6 +74,11 @@
 	}
 %>
   <p><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="button">Log out</a></p>
-
+  
+  <form name="subscribe" action="subscription" method="post">
+  	<input type="submit" name="fetchsubs" value="Subscribe">
+  </form>
+  
+  
   </body>
 </html>

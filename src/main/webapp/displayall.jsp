@@ -36,11 +36,7 @@
 		
 		<%
 	} else {
-		%>
-		
-		<p>Posts on Blog '${fn:escapeXml(blogName)}'.</p>
-		
-		<%
+
 		for (BlogPost blogPost : blogPosts) {
 			
 			pageContext.setAttribute("post_title", blogPost.getTitle());
