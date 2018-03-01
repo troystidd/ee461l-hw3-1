@@ -36,31 +36,23 @@
 		
 		<%
 	} else {
+		%>
+		<br>
+		<%
 
 		for (BlogPost blogPost : blogPosts) {
 			
 			pageContext.setAttribute("post_title", blogPost.getTitle());
-			pageContext.setAttribute("post_date", blogPost.getDate());
+			pageContext.setAttribute("post_user", blogPost.getUser());
+			pageContext.setAttribute("post_date", blogPost.getFormattedDate());
 			pageContext.setAttribute("post_content", blogPost.getContent());
 			%>
-			<h1>${fn:escapeXml(post_title)}</h1>
-			
-			<%
-			if (blogPost.getUser() == null) {
-				%>
-				<p>Anonymous</p>
-				<%
-			}
-			else {
-				pageContext.setAttribute("post_user", blogPost.getUser());
-				%>
+			<div class="box">
+				<h1>${fn:escapeXml(post_title)}</h1>
 				<p>${fn:escapeXml(post_user)}</p>
-				<%
-			}
-			%>
-			
-			<p>${fn:escapeXml(post_date)}</p>
-			<blockquote>${fn:escapeXml(post_content)}</blockquote>
+				<p>${fn:escapeXml(post_date)}</p>
+				<blockquote>${fn:escapeXml(post_content)}</blockquote>
+			</div>
 			<br>
 			<%
 		}

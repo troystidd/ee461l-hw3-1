@@ -65,13 +65,33 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>subscription</servlet-name>
+  	<servlet-name>subscriptionpage</servlet-name>
   	<servlet-class>blog.SubscriptionServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
+  	<servlet-name>subscriptionpage</servlet-name>
+  	<url-pattern>/subscriptionpage</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>subscription</servlet-name>
-  	<url-pattern>/subscription</url-pattern>
+  	<jsp-file>/subscription.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>subscription</servlet-name>
+  	<url-pattern>/subscription/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>unsubscription</servlet-name>
+  	<jsp-file>/unsubscription.jsp</jsp-file>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>unsubscription</servlet-name>
+  	<url-pattern>/unsubscription/*</url-pattern>
   </servlet-mapping>
   
    <servlet>

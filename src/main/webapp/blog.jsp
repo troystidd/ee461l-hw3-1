@@ -58,7 +58,7 @@
 			BlogPost blogPost = blogPosts.get(i);
 			pageContext.setAttribute("post_title", blogPost.getTitle());
 			pageContext.setAttribute("post_user", blogPost.getUser());
-			pageContext.setAttribute("post_date", blogPost.getDate());
+			pageContext.setAttribute("post_date", blogPost.getFormattedDate());
 			pageContext.setAttribute("post_content", blogPost.getContent());
 			%>
 			<div class="box">
@@ -75,9 +75,8 @@
 %>
   <p><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>" class="button">Log out</a></p>
   
-  <form name="subscribe" action="subscription" method="post">
-  	<input type="submit" name="fetchsubs" value="Subscribe">
-  </form>
+ <p><a href="http://ee461l-hw3.appspot.com/subscription/subscription.jsp" class="button">Subscribe</a></p>
+ <p><a href="http://ee461l-hw3.appspot.com/unsubscription/unsubscription.jsp" class="button">Unsubscribe</a></p>
   
   
   </body>

@@ -9,6 +9,7 @@ import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Parent;
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 @Entity
 public class BlogPost implements Comparable<BlogPost> {
@@ -19,7 +20,9 @@ public class BlogPost implements Comparable<BlogPost> {
     @Index String title;
     @Index String content;
     @Index Date date;
+    
     private BlogPost() {}
+    
     public BlogPost(User user, String title, String content, String blogName) {
         this.user = user;
         this.title = title;
@@ -27,6 +30,7 @@ public class BlogPost implements Comparable<BlogPost> {
         this.blogName = Key.create(Blog.class, blogName);
         date = new Date();
     }
+    
     public User getUser() {
         return user;
     }
@@ -34,13 +38,20 @@ public class BlogPost implements Comparable<BlogPost> {
     public String getTitle() {
     		return title;
     }
+    
     public String getContent() {
         return content;
     }
     
-    public String getDate() {
-    		SimpleDateFormat parser = new SimpleDateFormat("MMM dd yyyy");
+    public String getFormattedDate() {
+    		SimpleDateFormat parser = new SimpleDateFormat("MMM dd yyyy"); //ex: Feb 28 2018
+    		TimeZone tz = TimeZone.getTimeZone("CST"); //set timezone to central 
+    		parser.setTimeZone(tz);
     		return parser.format(date);
+    }
+    
+    public Date getDate() {
+    		return date;
     }
 
     @Override
